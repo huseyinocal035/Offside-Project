@@ -1,0 +1,53 @@
+
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>login</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- About Area Start -->
+<div id="about-area" class="about-area section pb-120 pt-120">
+    <div class="container">
+        <div class="row">
+            <!-- About Image -->
+            <div class="about-image col-md-5 col-xs-12 float-right">
+                <img src="img/about/2.jpg" alt="">
+            </div>
+            <!-- About Content -->
+            <div class="about-content about-content-2 col-md-7 col-xs-12" align="center">
+
+                <form method="post">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit">Login</button>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+

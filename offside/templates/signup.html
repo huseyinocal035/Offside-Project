@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>report</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- About Area Start -->
+<div >
+    <div class="container">
+        <div class="row">
+            <!-- About Image -->
+            <div >
+                <img src="img/about/2.jpg" alt="">
+            </div>
+            <!-- About Content -->
+            <div style="display:block">
+                <h2>About the Project</h2>
+                  <h2>Sign up</h2>
+                  <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Sign up</button>
+                  </form>
+
+            </div>
+
+            <div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

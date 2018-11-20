@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>shop</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Shop Page Area Start -->
+<div id="shop-page-area" class="shop-page-area section pb-70 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-xs-12 float-right mb-50">
+                <div class="row">
+					<!-- Shop Top Bar -->
+					<div class="shop-top-bar text-center mb-50 col-xs-12">
+
+					</div>
+                </div>
+                <div class="tab-content row">
+
+                    <div role="tabpanel" class="tab-pane active" id="grid-view">
+                        <div class="row">
+                            <!-- Single Product -->
+                            <div class="col-lg-4 col-sm-6 col-xs-12 mb-50">
+                                <div class="product-item">
+
+                                    {% for object in object_list %}
+
+                                    <!-- Product Image -->
+                                    <a href="#" class="image"><img src="/{{ object.pic }}" alt=""></a>
+
+                                        <!-- Product Content -->
+                                    <div class="content">
+                                        <!-- Product Title -->
+
+                                        <h4 class="title"><a >{{ object.Team }}</a></h4>
+                                        <!-- Product Category -->
+                                        <h5 class="cat">{{ object.category }}</h5>
+                                        <div class="price-ratting fix">
+                                           <!-- Product Price -->
+                                            <h3 class="price float-left"><span>$</span>{{ object.price }}</h3>
+
+                                            <!-- Product Ratting -->
+
+                                            <span class="ratting float-right">
+                                            {% load ratings %}
+                                            {% ratings object %}
+                                            </span>
+                                        </div>
+
+                                        <!-- Product Action Button -->
+                                        <div class="action-btn fix">
+                                            <a href="#" class="add-cart">ADD TO CART</a>
+                                            <a href="#" class="wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                        </div>
+
+                                    {% endfor %}
+
+
+
+
+                                    </div>
+
+
+                                </div>
+                            {% if request.user.is_authenticated %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <button type="submit">Submit</button>
+                                </form>
+                                {% endif %}
+                            {% if not request.user.is_authenticated %}
+                                <p style="background:#4d4d4d;color:#f1f1f1;border-radius:5px; padding:5px 3px; margin-right:10px">You have to log in to comment.</p>
+                            {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

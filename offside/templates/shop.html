@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+
+.star-ratings-rating-average {
+    display: none;
+}
+</style>
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>shop</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Shop Page Area Start -->
+<div id="shop-page-area" class="shop-page-area section pb-70 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-xs-12 float-right mb-50">
+                <div class="row">
+					<!-- Shop Top Bar -->
+					<div class="shop-top-bar text-center mb-50 col-xs-12">
+
+					</div>
+                </div>
+                <div class="tab-content row">
+
+                    <div role="tabpanel" class="tab-pane active" id="grid-view">
+                        {% for object in object_list %}
+                        <!-- Single Product -->
+                        <div class="col-lg-4 col-sm-6 col-xs-12 mb-50">
+                            <div class="product-item">
+
+
+                                <!-- Product Image -->
+
+                                <a href="{% url 'shopdetail' object.slug %}" class="image"><img height=300 width="250" src="/{{ object.pic }}" alt=""></a>
+
+                                    <!-- Product Content -->
+                                <div class="content">
+                                    <!-- Product Title -->
+                                    <h4 class="title"><a href="#">{{ object.Team }}</a></h4>
+                                    <!-- Product Category -->
+                                    <h5 class="cat">{{ object.category }}</h5>
+                                    <div class="price-ratting fix">
+                                       <!-- Product Price -->
+                                        <h3 class="price float-left"><span>$</span>{{ object.price }}</h3>
+                                        <!-- Product Ratting -->
+
+                                        <span class="ratting float-right">
+                                            {% load ratings %}
+                                        {% ratings object %}
+
+                                        </span>
+                                    </div>
+                                    <!-- Product Action Button -->
+                                    <div class="action-btn fix">
+                                        <a href="#" class="add-cart">ADD TO CART</a>
+                                        <a href="#" class="wishlist"><i class="zmdi zmdi-favorite"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Shop Bottom Bar -->
+					<div class="shop-bottom-bar text-center col-xs-12">
+						<!-- Product Pagination -->
+						{% if is_paginated %}
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                      {% if page_obj.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+                {% endif %}
+
+					</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Point Table Area End -->
+
+
+{% endblock %}

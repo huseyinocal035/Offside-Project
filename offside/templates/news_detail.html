@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>news</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Blog Area Start -->
+<div id="blog-area" class="blog-area section pb-70 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xs-12 mb-50">
+                <div class="row">
+                    <!-- Single Blog -->
+
+                    <div class="blog-item col-sm-6 col-xs-12 mb-30">
+                        <!-- Image -->
+                        {% for object in object_list %}
+                        <div class="image"><img src="/{{ object.pic }}" alt=""></div>
+                        <!-- Content -->
+{#                        <td><a href="{% url 'newsdetail' object.slug %}"> {{ object.name }}</a></td>#}
+
+                        <div class="content">
+                            <!-- Meta -->
+                           <div class="meta">
+                                <p class="date">{{ object.date }}</p>
+                                <p class="cat"><a href="#">{{ object.League }}</a></p>
+                            </div>
+
+                            <!-- Title -->
+                           <h3 class="title"><a href="#">{{ object.title }}</a></h3>
+                            <div class = "post_body">
+                                {{ object.desc}}
+                            </div>
+
+
+
+                        </div>
+                        {% endfor %}
+                             {% if request.user.is_authenticated %}
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form }}
+                                    <button type="submit">Submit</button>
+                                </form>
+                          {% endif %}
+                            {% if not request.user.is_authenticated %}
+                                <p style="background:#4d4d4d;color:#f1f1f1;border-radius:5px; padding:5px 3px; margin-right:10px">You have to log in to comment.</p>
+                            {% endif %}
+                    </div>
+
+
+                </div>
+                <!-- Pagination -->
+
+
+            </div>
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Area End -->
+
+
+{% endblock %}

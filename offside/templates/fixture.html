@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{%  load static %}
+
+
+{% block content %}
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>match fixtures</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Fixtures Area Start -->
+<div id="fixtures-area" class="fixtures-area section pb-120 pt-120">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                <!-- Fixtures Table -->
+                <div class="table-responsive fixtures-table">
+
+                <p><strong>Select the week</strong></p>
+                {% for object in object_list %}
+                    <a style="background:#4d4d4d;color:#f1f1f1;border-radius:5px; padding:5px 3px; margin-right:10px"href="{{ object.nth }}">{{ object.nth }} </a>
+                {% endfor %}
+
+                    <table class="table" style="margin-top:40px">
+                        <tr>
+
+                            <th>nth week</th>
+                            <th>home</th>
+							<th>away</th>
+                            <th>date</th>
+                            <th>time</th>
+                            <th>stadium</th>
+                            <th>result</th>
+                        </tr>
+                        {%  for object in object_list %}
+                        <tr>
+                            <td>{{ object.nth }}</td>
+                            <td><a href="{% url 'player' object.slug %}"> {{ object.home_team }}</a></td>
+                            <td><a href="{% url 'player' object.slug %}"> {{ object.away_team }}</a></td>
+{#                          <td>{{ object.home_team }}</td>#}
+{#							<td>{{ object.away_team }}</td>#}
+                            <td>{{ object.date }}</td>
+                            <td>{{ object.hour }}</td>
+                            <td>{{ object.stadium }}</td>
+                            <td>{{ object.result }}</td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Fixtures Area End -->
+
+
+
+
+{% endblock %}

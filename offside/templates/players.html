@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>Team Informations</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Point Table Area Start -->
+<div id="point-table-area" class="point-table-area section pb-120 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+                <!-- Points Table -->
+                <div class="table-responsive points-table">
+
+
+                    <table class="table mb-0">
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Number</th>
+                            <th>Position</th>
+
+                        </tr>
+                            <p style="background:#4d4d4d;color:#f1f1f1;border-radius:5px; padding:5px 3px; margin-right:10px">
+                            {{ leplayer.name }}
+                            </p>
+                            {%  for player in leplayer.players.all %}
+
+                                  <tr>
+
+                            <td> <img height=50 width="50" src="/{{ player.pic }}"/></td>
+                            <td> {{ player.name }}</td>
+                            <td> {{ player.number }}</td>
+                            <td> {{ player.position }}</td>
+                                    </tr>
+
+                             {% endfor %}
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Point Table Area End -->
+
+
+
+
+{% endblock %}

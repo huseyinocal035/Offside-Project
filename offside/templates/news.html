@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>news</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- Blog Area Start -->
+<div id="blog-area" class="blog-area section pb-70 pt-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xs-12 mb-50">
+                <div class="row">
+                    <!-- Single Blog -->
+
+                    <div class="blog-item col-sm-6 col-xs-12 mb-30">
+                        <!-- Image -->
+                        {% for object in object_list %}
+                        <div class="image"><img height="250" width="150" src="/{{ object.pic }}" alt=""></div>
+                        <!-- Content -->
+
+
+                        <div class="content">
+                            <!-- Meta -->
+
+                            <div class="meta">
+                                <p class="date">{{ object.date }}</p>
+                                <p class="cat"><a href="#">{{ object.League }}</a></p>
+                            </div>
+
+                            <!-- Title -->
+
+                            <h3 class="title"><a href="{% url 'newsdetail' object.slug %}">{{ object.title }}</a></h3>
+                            <div class = "post_body">
+                                {{ object.desc|safe|truncatewords:"50"|linebreaks}}
+                            </div>
+                            <a href="{% url 'newsdetail' object.slug %}">read more</a>
+
+
+                        </div>
+                        {% endfor %}
+                             {% if is_paginated %}
+                  <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+                    {% for i in paginator.page_range %}
+                      {% if page_obj.number == i %}
+                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+                {% endif %}
+                    </div>
+
+
+                </div>
+                <!-- Pagination -->
+
+
+            </div>
+            <!-- Blog Sidebar -->
+            <div class="col-md-4 col-xs-12 mb-50">
+
+                <!-- Single Sidebar -->
+                <div class="single-sidebar fix mb-30">
+                    <h4>Search</h4>
+
+                    <form action="#" id="search-form">
+                        <input type="text" placeholder="Search">
+                        <button><i class="zmdi zmdi-search"></i></button>
+                    </form>
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog Area End -->
+
+
+{% endblock %}

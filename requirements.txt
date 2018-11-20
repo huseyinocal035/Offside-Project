@@ -1,0 +1,1 @@
+django-star-ratings

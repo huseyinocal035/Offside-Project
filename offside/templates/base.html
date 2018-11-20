@@ -1,0 +1,215 @@
+{%  load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>OFFSIDE</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="{% static 'css/montserrat.css' %}">
+    <!-- CSS -->
+    <!-- Bootstrap CSS
+	============================================ -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Icon Font CSS
+	============================================ -->
+    <link rel="stylesheet" href="{% static 'css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- Plugins CSS
+	============================================ -->
+    <link rel="stylesheet" href="{% static 'css/plugins.css' %}">
+    <!-- Style CSS
+	============================================ -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/star-ratings.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/vendor/star-ratings.min.js' %}"></script>
+
+    <!-- Modernizer JS
+	============================================ -->
+    <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+</head>
+
+<body>
+<!-- Body main wrapper start -->
+<div class="wrapper fix">
+
+<!-- Header Area Start -->
+<div id="header-area" class="header-area section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <!---- Menu ---->
+                <div id="main-menu" class="main-menu float-left">
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="{% url 'index' %}">home</a></li>
+                            <li><a href="/report/">report</a></li>
+
+                            <li><a href="/news/">news</a></li>
+                            <li><a href="/fixture/">fixture</a>
+                                <ul>
+                                    <li><a href="/fixture/la-liga">La Liga</a></li>
+                                    <li><a href="/fixture/premier-league">Premier League</a></li>
+                                    <li><a href="/fixture/turkish-super-league">Turkish Super League</a></li>
+                                </ul></li>
+                            <li><a href="/league/">point table</a>
+                                <ul>
+                                    <li><a href="/league/la-liga">La Liga</a></li>
+                                    <li><a href="/league/premier-league">Premier League</a></li>
+                                    <li><a href="/league/turkish-super-league">Turkish Super League</a></li>
+                                </ul></li>
+                            <li><a href="/shop/">shop</a>
+                                <ul>
+                                    <li><a href="/shop/">shop</a></li>
+                                    <li><a href="/shop/chart">chart</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{% url 'contact' %}">contact</a></li>
+                            <li><a href="/accounts/signup">signup</a></li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+                <style>
+                    #login, #logout {
+
+                          background:#4d4d4d;
+                          color:#f1f1f1;
+                          border-radius:5px;
+                          padding:5px 3px;
+                          margin-right:10px;
+
+                        }
+
+                    #login , #logout a {
+                            font-family: Poppins;
+                            text-transform: uppercase;
+                        }
+
+                </style>
+                <div class="float-right">
+                    {% if user.is_authenticated %}
+                  <span id="hi" style="color:white;"> Hi {{ user.username }}! </span>
+
+                  <p id="logout" > <a href="{% url 'logout' %}">logout</a></p>
+                {% else %}
+                  <p style="color:white;">You are not logged in</p>
+                  <a id = "login"  href="{% url 'login' %}">login</a>
+                {% endif %}
+
+                </div>
+                <!---- Mobile Menu ---->
+                <div class="mobile-menu"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header Area End -->
+
+{% block content %}
+
+
+
+
+{%  endblock %}
+<!-- Footer Top Area Start -->
+<div class="footer-top-area section pb-70 pt-100">
+   <div class="footer-top-left-bg overlay"></div>
+    <div class="container">
+        <div class="row">
+            <!-- Footer About -->
+            <div class="col-md-5 col-xs-12 mb-30">
+                <div class="footer-about">
+                    <img src="img/logo.png" alt="">
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proiden</p>
+                    <div class="social fix">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-rss"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Twitter -->
+            <div class="col-md-4 col-sm-6 col-xs-12 mb-30">
+                <div class="twitter-widget">
+                    <h3 class="title">Latest Tweets</h3>
+                    <div class="single-twite">
+                        <p>Duis aute irure <a href="#">@dolor</a> in rderiin voluptate velit esse cillum dolore eu ft nulla pariatur. Excepteur <a href="#">@sint</a> occaecat..</p>
+                        <span>30 minutes ago</span>
+                    </div>
+                    <div class="single-twite">
+                        <p>Duis aute irure <a href="#">@dolor</a> in rderiin voluptate velit esse cillum dolore eu ft </p>
+                        <span>15 minutes ago</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Subscribe -->
+            <div class="col-md-3 col-sm-6 col-xs-12 mb-30">
+                <div class="subscribe-widget">
+                    <h3 class="title">Newsletters</h3>
+                    <div class="subscribe-form">
+                        <form action="#">
+                            <input type="text" placeholder="your email address">
+                            <button class="submit"><i class="zmdi zmdi-mail-send"></i></button>
+                        </form>
+                    </div>
+                    <p><span>Phone:</span> +98 996 554 658</p>
+                    <p><span>email:</span> sport@email.com</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Footer Top Area End -->
+
+<!-- Footer Bottom Area Start -->
+<div class="footer-bottom-area section">
+    <div class="container">
+        <div class="row">
+
+
+
+        </div>
+    </div>
+</div>
+<!-- Footer Bottom Area End -->
+
+
+</div>
+<!-- Body main wrapper end -->
+
+<!-- JS -->
+
+<!-- jQuery JS
+============================================ -->
+<script src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+<!-- Bootstrap JS
+============================================ -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Plugins JS
+============================================ -->
+<script src="{% static 'js/plugins.js' %}"></script>
+<!-- Ajax Mail JS
+============================================ -->
+<script src="{% static 'js/ajax-mail.js' %}"></script>
+<!-- Main JS
+============================================ -->
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+
+
+</html>

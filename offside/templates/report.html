@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: center;
+    padding: 25px;
+    border-style: solid;
+}
+
+tr:nth-child(even){background-color: #66ff66}
+
+th {
+    background-color:LightGray;
+    color: black;
+}
+</style>
+<!-- Page Banner Area Start -->
+<div id="page-banner-area" class="page-banner-area section">
+    <div class="container">
+        <div class="row">
+            <div class="page-banner-title text-center col-xs-12">
+                <h2>report</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Banner Area End -->
+
+<!-- About Area Start -->
+<div id="about-area" class="about-area section pb-120 pt-120">
+    <div class="container">
+        <div class="row">
+            <!-- About Image -->
+            <div class="about-image col-md-5 col-xs-12 float-right">
+                <img src="img/about/2.jpg" alt="">
+            </div>
+            <!-- About Content -->
+            <div class="about-content about-content-2 col-md-7 col-xs-12" align="center">
+                <h2>Project Report</h2>
+
+
+
+
+                <table  >
+                  <tr>
+                    <th>Project Name</th>
+                    <td colspan="3"><b>OFFSIDE</b></td>
+
+                  </tr>
+                  <tr>
+                    <th rowspan="3">Group Members</th>
+                      <td ><i>Name Surname</i></td>
+                      <td colspan="2" ><i>Student Id's</i></td>
+
+                  </tr>
+                  <tr>
+                    <td >Mustafa Polat</td>
+                    <td colspan="2">130709027</td>
+
+                  </tr>
+                  <tr>
+                    <td>Hüseyin Öcal</td>
+                    <td colspan="2">130709028</td>
+
+                  </tr>
+                  <tr>
+                    <th rowspan="5">What we implemented for core part?</th>
+                      <td><i>Adapt a template</i></td>
+                    <td colspan="2">We adapt the template.Some major steps like this;
+                        First of all, we created static directory and used it for css,img js files.
+                        Then,we created base.html index.html and others.
+                        By making this process we made some lines static because header and footer parts should be same on every page.
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><i>Define your model(s)</i></td>
+                    <td colspan="2">We defined our models as in project.
+                    For instance in Players model;
+                    We know that players should have team, name, number, position and picture.
+                    We defined everthings related to attributes such as; we made number as IntegerField()as well
+                    Our models are Team,League,Manager,Player,Match.News,Product and Category.
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><i>Dynamic pages</i></td>
+                    <td colspan="2">Our dynamic pages generally are fixture,point table ,news ,shop.
+                    On this pages we can see that user can select item, click it easily.
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><i>Using an HTML table</i></td>
+                    <td colspan="2">Actually we have 3 table but tables of fixture page and point table page are simple,
+                        in report page we created complex table as we can make on lab courses by using colspan,rowspan css and html.</td>
+                  </tr>
+                  <tr>
+                      <td><i>Forms</i></td>
+                    <td colspan="2">We implement comment form for both news and products in our project.</td>
+                  </tr>
+                  <tr>
+                    <th rowspan="7">What we implemented for extra points?</th>
+                      <td><i>Customization of template</i> </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td><i>More models</i> </td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td><i>Form API</i></td>
+                    <td colspan="2">We implement another form
+                        for <a href="/accounts/login">Login </a>
+                        and <a href="/accounts/signup">Sign Up</a></td>
+                  </tr>
+                  <tr>
+                      <td><i>Content coverage</i></td>
+                    <td colspan="2">We added 474 data (30 team,30 product, 333 players, 18 news, 60 match,3 leagues)</td>
+                  </tr>
+                  <tr>
+                      <td><i>More dynamic content</i></td>
+                    <td colspan="2">We have more dynamic pages such as <a href="/league/la-liga">Point table</a>
+                    <a href="/news/wilshere-no-closer-to-signing-new-arsenal-contract/">News Detail</a>,
+                        <a href="/shop/galatasaray-shirt-yellow-red/">Shop Detail</a> and <a href="/fixture/la-liga">Fixture</a>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td><i>Advanced Django features</i></td>
+                    <td colspan="2"></td>
+                  </tr>
+                  <tr>
+                      <td><i>Contributed Django packages</i></td>
+                    <td colspan="2">We incorporated the Django packages which is called <a href="https://github.com/wildfish/django-star-ratings"> Star-Ratings </a>
+                         as we tried at lab course.</td>
+                  </tr>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About Area End -->
+
+
+
+{% endblock %}
